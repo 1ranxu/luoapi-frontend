@@ -6,7 +6,7 @@ import {FormattedMessage, useIntl} from '@umijs/max';
 import {Button, Drawer, message} from 'antd';
 import React, {useRef, useState} from 'react';
 import {
-  addInterfaceInfoUsingPOST,
+  addInterfaceInfoUsingPOST, deleteInterfaceInfoUsingPOST,
   listInterfaceInfoByPageUsingGET,
   updateInterfaceInfoUsingPOST,
 } from "@/services/luoapi-backend/interfaceInfoController";
@@ -15,30 +15,9 @@ import CreateModal from "@/pages/InterfaceInfo/components/CreateModal";
 import UpdateModal from "@/pages/InterfaceInfo/components/UpdateModal";
 
 
-/**
- *  Delete node
- * @zh-CN 删除节点
- *
- * @param selectedRows
- */
-const handleRemove = async (selectedRows: API.RuleListItem[]) => {
-    const hide = message.loading('正在删除');
-    if (!selectedRows) return true;
-    try {
-        await removeRule({
-            key: selectedRows.map((row) => row.key),
-        });
-        hide();
-        message.success('Deleted successfully and will refresh soon');
-        return true;
-    } catch (error) {
-        hide();
-        message.error('Delete failed, please try again');
-        return false;
-    }
-};
 
 const TableList: React.FC = () => {
+    const actionRef = useRef<ActionType>();
     /**
      * @en-US Pop-up window of new window
      * @zh-CN 新建窗口的弹窗
@@ -56,6 +35,7 @@ const TableList: React.FC = () => {
             hide();
             message.success('创建成功!');
             handleModalOpen(false)
+            await actionRef.current?.reload()
             return true;
         } catch (error:any) {
             hide();
@@ -84,6 +64,7 @@ const TableList: React.FC = () => {
         hide();
         message.success('修改成功');
         handleUpdateModalOpen(false);
+        await actionRef.current?.reload()
         return true;
       } catch (error:any) {
         hide();
@@ -91,9 +72,32 @@ const TableList: React.FC = () => {
         return false;
       }
     };
-    const [showDetail, setShowDetail] = useState<boolean>(false);
 
-    const actionRef = useRef<ActionType>();
+    /**
+     *  Delete node
+     * @zh-CN 删除节点
+     *
+     * @param selectedRows
+     */
+    const handleRemove = async (record: API.InterfaceInfo) => {
+      const hide = message.loading('正在删除');
+      if (!record) return true;
+      try {
+        await deleteInterfaceInfoUsingPOST({
+          id:record.id
+        });
+        hide();
+        message.success('删除成功');
+        await actionRef.current?.reload()
+        return true;
+      } catch (error:any) {
+        hide();
+        message.error('删除失败，'+error.message);
+        return false;
+      }
+    };
+
+    const [showDetail, setShowDetail] = useState<boolean>(false);
     const [currentRow, setCurrentRow] = useState<API.InterfaceInfo>();
     const [selectedRowsState, setSelectedRows] = useState<API.RuleListItem[]>([]);
 
@@ -208,6 +212,14 @@ const TableList: React.FC = () => {
                 >
                     修改
                 </a>,
+              <a
+                key="config"
+                onClick={async () => {
+                 await handleRemove(record);
+                }}
+              >
+                删除
+              </a>,
             ],
         },
 
