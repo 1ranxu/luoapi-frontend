@@ -12,10 +12,9 @@ export type Props = {
 const CreateModal: React.FC<Props> = (props) => {
     const {visible, columns, onCancel, onSubmit} = props;
     return (
-        <Modal visible={visible} onCancel={onCancel}>
+        <Modal visible={visible} onCancel={onCancel} footer={null}>
             <ProTable type='form' columns={columns} onSubmit={async (value) => {
-              console.log(value)
-              onSubmit(value)
+              await onSubmit(value)
             }}>
 
             </ProTable>
