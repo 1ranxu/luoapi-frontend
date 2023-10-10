@@ -12,7 +12,7 @@ const Settings: ProLayoutProps & {
   colorPrimary: '#1890ff',
   siderMenuType: "group",
   splitMenus: false,
-  layout: 'top',
+  layout: 'side',
   contentWidth: 'Fluid',
   fixedHeader: false,
   fixSiderbar: true,
