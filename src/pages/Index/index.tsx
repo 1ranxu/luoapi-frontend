@@ -19,7 +19,6 @@ const Index: React.FC = () => {
         current,
         pageSize
       })
-      message.success('查询成功');
       setList(res.data?.records ?? [])
       setTotal(res.data?.total ?? 0)
     } catch (error: any) {
@@ -38,27 +37,30 @@ const Index: React.FC = () => {
         loading={loading}
         itemLayout="horizontal"
         dataSource={list}
-        renderItem={(item) => (
-          <List.Item
-            actions={[<a key="list-more-infomation">查看</a>]}
-          >
-            <List.Item.Meta
-              title={<a href="https://ant.design">{item.name}</a>}
-              description={item.description}
-            />
-            <div>
+        renderItem={(item) => {
+         const apiLink=`/interface_doc/${item.id}`;
+         return ( <List.Item
+           actions={[<a key={item.id} href={apiLink}>查看</a>]}
+         >
+           <List.Item.Meta
+             title={<a href={apiLink}>{item.name}</a>}
+             description={item.description}
+           />
+           <div>
 
-            </div>
-          </List.Item>
-        )}
+           </div>
+         </List.Item>
+         )
+        }
+      }
         pagination={{
           showTotal(total) {
-            return '接口总数：'+total
+            return '接口总数：' + total
           },
           pageSize: 10,
           total,
-          onChange(page, pageSize){
-            loadData(page,pageSize)
+          onChange(page, pageSize) {
+            loadData(page, pageSize)
           }
         }}
       />

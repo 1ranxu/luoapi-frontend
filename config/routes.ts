@@ -18,6 +18,13 @@ export default [
     component: './Index',
   },
   {
+    path: '/interface_doc/:id',
+    name: '查看接口',
+    icon: 'smile',
+    component: './InterfaceDoc',
+    hideInMenu:true,
+  },
+  {
     path: '/user',
     layout: false,
     routes: [
@@ -40,11 +47,6 @@ export default [
         path: '/admin/interface_info',
         component: './Admin/InterfaceInfo',
       },
-/*      {
-        path: '/admin/sub-page',
-        name: 'sub-page',
-        component: './Admin',
-      },*/
     ],
   },
   {
