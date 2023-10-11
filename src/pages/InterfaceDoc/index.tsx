@@ -49,6 +49,11 @@ const Index: React.FC = () => {
             children: data.method,
         },
         {
+          key: '3',
+          label: '请求参数',
+          children: data.requestParams,
+        },
+        {
             key: '4',
             label: '请求头',
             children: data.requestHeader,
