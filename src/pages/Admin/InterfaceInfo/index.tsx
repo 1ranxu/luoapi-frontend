@@ -191,29 +191,47 @@ const TableList: React.FC = () => {
         {
             title: '请求方式',
             dataIndex: 'method',
-            valueType: 'text',
+            valueType: 'select',
             formItemProps:{
               rules:[
                 {
                   required:true,
                 }
               ],
-            }
+            },
+            valueEnum: {
+              0: {
+                text: 'GET',
+                status: 'Default'
+              },
+              1: {
+                text: 'POST',
+                status: 'Success'
+              },
+              2: {
+                text: 'DELETE',
+                status: 'Success'
+              },
+              3: {
+                text: 'PUT',
+                status: 'Success'
+              },
+            },
         },
         {
           title: '请求参数',
           dataIndex: 'requestParams',
-          valueType: 'text',
+          valueType: 'jsonCode',
         },
         {
             title: '请求头',
             dataIndex: 'requestHeader',
-            valueType: 'text',
+            valueType: 'jsonCode',
         },
         {
             title: '响应头',
             dataIndex: 'responseHeader',
-            valueType: 'text',
+            valueType: 'jsonCode',
         },
         {
             title: '接口状态',
