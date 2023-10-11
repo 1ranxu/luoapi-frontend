@@ -1,8 +1,12 @@
 import {PageContainer} from '@ant-design/pro-components';
-import {Card, Descriptions, DescriptionsProps, message} from 'antd';
+import {Button, Card, Descriptions, DescriptionsProps, Divider, Form, message, Spin} from 'antd';
 import React, {useEffect, useState} from 'react';
-import {getInterfaceInfoByIdUsingGET} from "@/services/luoapi-backend/interfaceInfoController";
+import {
+  getInterfaceInfoByIdUsingGET,
+  invokeInterfaceInfoUsingPOST
+} from "@/services/luoapi-backend/interfaceInfoController";
 import {useParams} from "@@/exports";
+import TextArea from "antd/es/input/TextArea";
 
 /**
  * 主页
@@ -11,6 +15,8 @@ import {useParams} from "@@/exports";
 const Index: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState<API.InterfaceInfo>({});
+    const [invokeRes, setinvokeRes] = useState<any>();
+    const [invokeLoading, setInvokeLoading] = useState(false);
     const params = useParams()
     const loadData = async () => {
         if (!params.id) {
@@ -75,11 +81,52 @@ const Index: React.FC = () => {
         },
     ];
 
+    const onFinish = async (values: any) => {
+      if (!params.id) {
+        message.error('参数不存在');
+        return;
+      }
+      setLoading(true)
+      try {
+        const res=await invokeInterfaceInfoUsingPOST({
+          ...values,
+          id: params.id
+        })
+        setinvokeRes(res.data)
+      } catch (error: any) {
+        message.error('操作失败，' + error.message);
+      }
+      setInvokeLoading(false)
+    };
 
     return (
         <PageContainer title={"查看接口文档"}>
             <Card>
-                <Descriptions column={1} title={data.name} items={items} />
+              <Descriptions column={1} title={data.name} items={items} />
+            </Card>
+            <Divider/>
+            <Card title={"在线调用"}>
+              <Form
+                name="invoke"
+                onFinish={onFinish}
+                layout="vertical"
+              >
+                <Form.Item
+                  label="请求参数"
+                  name="userRequestParams"
+                >
+                  <TextArea />
+                </Form.Item>
+                <Form.Item >
+                  <Button type="primary" htmlType="submit">
+                    发送
+                  </Button>
+                </Form.Item>
+              </Form>
+            </Card>
+            <Divider/>
+            <Card loading={invokeLoading} title={"调用结果"}>
+                {invokeRes}
             </Card>
         </PageContainer>
     );
