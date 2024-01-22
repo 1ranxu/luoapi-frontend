@@ -5,6 +5,12 @@ declare namespace API {
     message?: string;
   };
 
+  type BaseResponseImageVo = {
+    code?: number;
+    data?: ImageVo;
+    message?: string;
+  };
+
   type BaseResponseInterfaceInfo = {
     code?: number;
     data?: InterfaceInfo;
@@ -14,24 +20,6 @@ declare namespace API {
   type BaseResponseListInterfaceInfo = {
     code?: number;
     data?: InterfaceInfo[];
-    message?: string;
-  };
-
-  type BaseResponseListInvokeInterfaceInfoVO = {
-    code?: number;
-    data?: InvokeInterfaceInfoVO[];
-    message?: string;
-  };
-
-  type BaseResponseListPost = {
-    code?: number;
-    data?: Post[];
-    message?: string;
-  };
-
-  type BaseResponseListUserInterfaceInfo = {
-    code?: number;
-    data?: UserInterfaceInfo[];
     message?: string;
   };
 
@@ -59,39 +47,9 @@ declare namespace API {
     message?: string;
   };
 
-  type BaseResponsePagePost = {
-    code?: number;
-    data?: PagePost;
-    message?: string;
-  };
-
-  type BaseResponsePageUserInterfaceInfo = {
-    code?: number;
-    data?: PageUserInterfaceInfo;
-    message?: string;
-  };
-
   type BaseResponsePageUserVO = {
     code?: number;
     data?: PageUserVO;
-    message?: string;
-  };
-
-  type BaseResponsePost = {
-    code?: number;
-    data?: Post;
-    message?: string;
-  };
-
-  type BaseResponseUser = {
-    code?: number;
-    data?: User;
-    message?: string;
-  };
-
-  type BaseResponseUserInterfaceInfo = {
-    code?: number;
-    data?: UserInterfaceInfo;
     message?: string;
   };
 
@@ -105,12 +63,17 @@ declare namespace API {
     id?: number;
   };
 
-  type getInterfaceInfoByIdUsingGETParams = {
-    /** id */
-    id?: number;
+  type Field = {
+    fieldName?: string;
+    value?: string;
   };
 
-  type getPostByIdUsingGETParams = {
+  type getCaptchaUsingGETParams = {
+    /** emailAccount */
+    emailAccount: string;
+  };
+
+  type getInterfaceInfoByIdUsingGETParams = {
     /** id */
     id?: number;
   };
@@ -120,26 +83,34 @@ declare namespace API {
     id?: number;
   };
 
-  type getUserInterfaceInfoByIdUsingGETParams = {
-    /** id */
-    id?: number;
-  };
-
   type IdRequest = {
     id?: number;
   };
 
+  type ImageVo = {
+    name?: string;
+    status?: string;
+    uid?: string;
+    url?: string;
+  };
+
   type InterfaceInfo = {
+    avatarUrl?: string;
     createTime?: string;
     description?: string;
     id?: number;
-    idDelete?: number;
+    isDelete?: number;
     method?: string;
     name?: string;
+    reduceScore?: number;
+    requestExample?: string;
     requestHeader?: string;
     requestParams?: string;
     responseHeader?: string;
+    responseParams?: string;
+    returnFormat?: string;
     status?: number;
+    totalInvokes?: number;
     updateTime?: string;
     url?: string;
     userId?: number;
@@ -147,17 +118,27 @@ declare namespace API {
 
   type InterfaceInfoAddRequest = {
     description?: string;
+    id?: number;
     method?: string;
     name?: string;
+    reduceScore?: number;
+    requestExample?: string;
     requestHeader?: string;
-    requestParams?: string;
+    requestParams?: RequestParamsField[];
     responseHeader?: string;
+    responseParams?: ResponseParamsField[];
+    returnFormat?: string;
     url?: string;
   };
 
   type InterfaceInfoInvokeRequest = {
     id?: number;
-    userRequestParams?: string;
+    requestParams?: Field[];
+  };
+
+  type InterfaceInfoUpdateAvatarRequest = {
+    avatarUrl?: string;
+    id?: number;
   };
 
   type InterfaceInfoUpdateRequest = {
@@ -165,28 +146,14 @@ declare namespace API {
     id?: number;
     method?: string;
     name?: string;
+    reduceScore?: number;
+    requestExample?: string;
     requestHeader?: string;
-    requestParams?: string;
+    requestParams?: RequestParamsField[];
     responseHeader?: string;
-    status?: number;
+    responseParams?: ResponseParamsField[];
+    returnFormat?: string;
     url?: string;
-  };
-
-  type InvokeInterfaceInfoVO = {
-    createTime?: string;
-    description?: string;
-    id?: number;
-    idDelete?: number;
-    method?: string;
-    name?: string;
-    requestHeader?: string;
-    requestParams?: string;
-    responseHeader?: string;
-    status?: number;
-    totalInvokeNum?: number;
-    updateTime?: string;
-    url?: string;
-    userId?: number;
   };
 
   type listInterfaceInfoByPageUsingGETParams = {
@@ -196,9 +163,14 @@ declare namespace API {
     method?: string;
     name?: string;
     pageSize?: number;
-    requestHeader?: string;
-    requestParams?: string;
-    responseHeader?: string;
+    reduceScore?: number;
+    'requestParams[0].desc'?: string;
+    'requestParams[0].fieldName'?: string;
+    'requestParams[0].required'?: string;
+    'requestParams[0].type'?: string;
+    'responseParams[0].desc'?: string;
+    'responseParams[0].fieldName'?: string;
+    'responseParams[0].type'?: string;
     sortField?: string;
     sortOrder?: string;
     status?: number;
@@ -213,47 +185,18 @@ declare namespace API {
     method?: string;
     name?: string;
     pageSize?: number;
-    requestHeader?: string;
-    requestParams?: string;
-    responseHeader?: string;
+    reduceScore?: number;
+    'requestParams[0].desc'?: string;
+    'requestParams[0].fieldName'?: string;
+    'requestParams[0].required'?: string;
+    'requestParams[0].type'?: string;
+    'responseParams[0].desc'?: string;
+    'responseParams[0].fieldName'?: string;
+    'responseParams[0].type'?: string;
     sortField?: string;
     sortOrder?: string;
     status?: number;
     url?: string;
-    userId?: number;
-  };
-
-  type listPostByPageUsingGETParams = {
-    age?: number;
-    contact?: string;
-    content?: string;
-    current?: number;
-    education?: string;
-    gender?: number;
-    job?: string;
-    loveExp?: string;
-    pageSize?: number;
-    place?: string;
-    reviewStatus?: number;
-    sortField?: string;
-    sortOrder?: string;
-    userId?: number;
-  };
-
-  type listPostUsingGETParams = {
-    age?: number;
-    contact?: string;
-    content?: string;
-    current?: number;
-    education?: string;
-    gender?: number;
-    job?: string;
-    loveExp?: string;
-    pageSize?: number;
-    place?: string;
-    reviewStatus?: number;
-    sortField?: string;
-    sortOrder?: string;
     userId?: number;
   };
 
@@ -267,35 +210,8 @@ declare namespace API {
     sortOrder?: string;
     updateTime?: string;
     userAccount?: string;
-    userAvatar?: string;
     userName?: string;
     userRole?: string;
-  };
-
-  type listUserInterfaceInfoByPageUsingGETParams = {
-    current?: number;
-    id?: number;
-    interfaceInfoId?: number;
-    invokedNum?: number;
-    leftNum?: number;
-    pageSize?: number;
-    sortField?: string;
-    sortOrder?: string;
-    status?: number;
-    userId?: number;
-  };
-
-  type listUserInterfaceInfoUsingGETParams = {
-    current?: number;
-    id?: number;
-    interfaceInfoId?: number;
-    invokedNum?: number;
-    leftNum?: number;
-    pageSize?: number;
-    sortField?: string;
-    sortOrder?: string;
-    status?: number;
-    userId?: number;
   };
 
   type listUserUsingGETParams = {
@@ -308,87 +224,8 @@ declare namespace API {
     sortOrder?: string;
     updateTime?: string;
     userAccount?: string;
-    userAvatar?: string;
     userName?: string;
     userRole?: string;
-  };
-
-  type ModelAndView = {
-    empty?: boolean;
-    model?: Record<string, any>;
-    modelMap?: Record<string, any>;
-    reference?: boolean;
-    status?:
-      | 'ACCEPTED'
-      | 'ALREADY_REPORTED'
-      | 'BAD_GATEWAY'
-      | 'BAD_REQUEST'
-      | 'BANDWIDTH_LIMIT_EXCEEDED'
-      | 'CHECKPOINT'
-      | 'CONFLICT'
-      | 'CONTINUE'
-      | 'CREATED'
-      | 'DESTINATION_LOCKED'
-      | 'EXPECTATION_FAILED'
-      | 'FAILED_DEPENDENCY'
-      | 'FORBIDDEN'
-      | 'FOUND'
-      | 'GATEWAY_TIMEOUT'
-      | 'GONE'
-      | 'HTTP_VERSION_NOT_SUPPORTED'
-      | 'IM_USED'
-      | 'INSUFFICIENT_SPACE_ON_RESOURCE'
-      | 'INSUFFICIENT_STORAGE'
-      | 'INTERNAL_SERVER_ERROR'
-      | 'I_AM_A_TEAPOT'
-      | 'LENGTH_REQUIRED'
-      | 'LOCKED'
-      | 'LOOP_DETECTED'
-      | 'METHOD_FAILURE'
-      | 'METHOD_NOT_ALLOWED'
-      | 'MOVED_PERMANENTLY'
-      | 'MOVED_TEMPORARILY'
-      | 'MULTIPLE_CHOICES'
-      | 'MULTI_STATUS'
-      | 'NETWORK_AUTHENTICATION_REQUIRED'
-      | 'NON_AUTHORITATIVE_INFORMATION'
-      | 'NOT_ACCEPTABLE'
-      | 'NOT_EXTENDED'
-      | 'NOT_FOUND'
-      | 'NOT_IMPLEMENTED'
-      | 'NOT_MODIFIED'
-      | 'NO_CONTENT'
-      | 'OK'
-      | 'PARTIAL_CONTENT'
-      | 'PAYLOAD_TOO_LARGE'
-      | 'PAYMENT_REQUIRED'
-      | 'PERMANENT_REDIRECT'
-      | 'PRECONDITION_FAILED'
-      | 'PRECONDITION_REQUIRED'
-      | 'PROCESSING'
-      | 'PROXY_AUTHENTICATION_REQUIRED'
-      | 'REQUESTED_RANGE_NOT_SATISFIABLE'
-      | 'REQUEST_ENTITY_TOO_LARGE'
-      | 'REQUEST_HEADER_FIELDS_TOO_LARGE'
-      | 'REQUEST_TIMEOUT'
-      | 'REQUEST_URI_TOO_LONG'
-      | 'RESET_CONTENT'
-      | 'SEE_OTHER'
-      | 'SERVICE_UNAVAILABLE'
-      | 'SWITCHING_PROTOCOLS'
-      | 'TEMPORARY_REDIRECT'
-      | 'TOO_EARLY'
-      | 'TOO_MANY_REQUESTS'
-      | 'UNAUTHORIZED'
-      | 'UNAVAILABLE_FOR_LEGAL_REASONS'
-      | 'UNPROCESSABLE_ENTITY'
-      | 'UNSUPPORTED_MEDIA_TYPE'
-      | 'UPGRADE_REQUIRED'
-      | 'URI_TOO_LONG'
-      | 'USE_PROXY'
-      | 'VARIANT_ALSO_NEGOTIATES';
-    view?: View;
-    viewName?: string;
   };
 
   type OrderItem = {
@@ -397,122 +234,51 @@ declare namespace API {
   };
 
   type PageInterfaceInfo = {
-    countId?: string;
+    countId?: number;
     current?: number;
     maxLimit?: number;
     optimizeCountSql?: boolean;
     orders?: OrderItem[];
-    pages?: number;
+    pages?: string;
     records?: InterfaceInfo[];
     searchCount?: boolean;
     size?: number;
     total?: number;
   };
 
-  type PagePost = {
-    countId?: string;
-    current?: number;
-    maxLimit?: number;
-    optimizeCountSql?: boolean;
-    orders?: OrderItem[];
-    pages?: number;
-    records?: Post[];
-    searchCount?: boolean;
-    size?: number;
-    total?: number;
-  };
-
-  type PageUserInterfaceInfo = {
-    countId?: string;
-    current?: number;
-    maxLimit?: number;
-    optimizeCountSql?: boolean;
-    orders?: OrderItem[];
-    pages?: number;
-    records?: UserInterfaceInfo[];
-    searchCount?: boolean;
-    size?: number;
-    total?: number;
-  };
-
   type PageUserVO = {
-    countId?: string;
+    countId?: number;
     current?: number;
     maxLimit?: number;
     optimizeCountSql?: boolean;
     orders?: OrderItem[];
-    pages?: number;
+    pages?: string;
     records?: UserVO[];
     searchCount?: boolean;
     size?: number;
     total?: number;
   };
 
-  type Post = {
-    age?: number;
-    contact?: string;
-    content?: string;
-    createTime?: string;
-    education?: string;
-    gender?: number;
-    id?: number;
-    isDelete?: number;
-    job?: string;
-    loveExp?: string;
-    photo?: string;
-    place?: string;
-    reviewMessage?: string;
-    reviewStatus?: number;
-    thumbNum?: number;
-    updateTime?: string;
-    userId?: number;
-    viewNum?: number;
+  type RequestParamsField = {
+    desc?: string;
+    fieldName?: string;
+    required?: string;
+    type?: string;
   };
 
-  type PostAddRequest = {
-    age?: number;
-    contact?: string;
-    content?: string;
-    education?: string;
-    gender?: number;
-    job?: string;
-    loveExp?: string;
-    photo?: string;
-    place?: string;
+  type ResponseParamsField = {
+    desc?: string;
+    fieldName?: string;
+    type?: string;
   };
 
-  type PostUpdateRequest = {
-    age?: number;
-    contact?: string;
-    content?: string;
-    education?: string;
-    gender?: number;
-    id?: number;
-    job?: string;
-    loveExp?: string;
-    photo?: string;
-    place?: string;
-    reviewMessage?: string;
-    reviewStatus?: number;
-  };
-
-  type User = {
-    accessKey?: string;
-    createTime?: string;
-    gender?: number;
-    id?: number;
-    isDelete?: number;
-    secretKey?: string;
-    updateTime?: string;
-    userAccount?: string;
-    userAvatar?: string;
-    userName?: string;
-    userPassword?: string;
-    userRole?: string;
+  type uploadFileUsingPOSTParams = {
+    biz?: string;
   };
 
   type UserAddRequest = {
     gender?: number;
+    score?: number;
     userAccount?: string;
     userAvatar?: string;
     userName?: string;
@@ -520,31 +286,20 @@ declare namespace API {
     userRole?: string;
   };
 
-  type UserInterfaceInfo = {
-    createTime?: string;
-    id?: number;
-    idDelete?: number;
-    interfaceInfoId?: number;
-    invokedNum?: number;
-    leftNum?: number;
-    status?: number;
-    updateTime?: string;
-    userId?: number;
+  type UserBindEmailRequest = {
+    captcha?: string;
+    emailAccount?: string;
   };
 
-  type UserInterfaceInfoAddRequest = {
-    interfaceInfoId?: number;
-    invokedNum?: number;
-    leftNum?: number;
-    status?: number;
-    userId?: number;
+  type UserEmailLoginRequest = {
+    captcha?: string;
+    emailAccount?: string;
   };
 
-  type UserInterfaceInfoUpdateRequest = {
-    id?: number;
-    invokedNum?: number;
-    leftNum?: number;
-    status?: number;
+  type UserEmailRegisterRequest = {
+    captcha?: string;
+    emailAccount?: string;
+    userName?: string;
   };
 
   type UserLoginRequest = {
@@ -555,12 +310,19 @@ declare namespace API {
   type UserRegisterRequest = {
     checkPassword?: string;
     userAccount?: string;
+    userName?: string;
     userPassword?: string;
+  };
+
+  type UserUnBindEmailRequest = {
+    captcha?: string;
+    emailAccount?: string;
   };
 
   type UserUpdateRequest = {
     gender?: number;
     id?: number;
+    score?: number;
     userAccount?: string;
     userAvatar?: string;
     userName?: string;
@@ -569,17 +331,18 @@ declare namespace API {
   };
 
   type UserVO = {
+    accessKey?: string;
     createTime?: string;
+    email?: string;
     gender?: number;
     id?: number;
+    score?: number;
+    secretKey?: string;
     updateTime?: string;
     userAccount?: string;
     userAvatar?: string;
     userName?: string;
+    userProfile?: string;
     userRole?: string;
-  };
-
-  type View = {
-    contentType?: string;
   };
 }

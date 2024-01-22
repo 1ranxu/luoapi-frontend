@@ -3,7 +3,7 @@
 import { request } from '@umijs/max';
 
 /** addInterfaceInfo POST /api/interfaceInfo/add */
-export async function addInterfaceInfoUsingPOST(
+export async function addInterfaceInfoUsingPost(
   body: API.InterfaceInfoAddRequest,
   options?: { [key: string]: any },
 ) {
@@ -18,7 +18,7 @@ export async function addInterfaceInfoUsingPOST(
 }
 
 /** deleteInterfaceInfo POST /api/interfaceInfo/delete */
-export async function deleteInterfaceInfoUsingPOST(
+export async function deleteInterfaceInfoUsingPost(
   body: API.DeleteRequest,
   options?: { [key: string]: any },
 ) {
@@ -33,7 +33,7 @@ export async function deleteInterfaceInfoUsingPOST(
 }
 
 /** getInterfaceInfoById GET /api/interfaceInfo/get */
-export async function getInterfaceInfoByIdUsingGET(
+export async function getInterfaceInfoByIdUsingGet(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.getInterfaceInfoByIdUsingGETParams,
   options?: { [key: string]: any },
@@ -48,7 +48,7 @@ export async function getInterfaceInfoByIdUsingGET(
 }
 
 /** invokeInterfaceInfo POST /api/interfaceInfo/invoke */
-export async function invokeInterfaceInfoUsingPOST(
+export async function invokeInterfaceInfoUsingPost(
   body: API.InterfaceInfoInvokeRequest,
   options?: { [key: string]: any },
 ) {
@@ -63,7 +63,7 @@ export async function invokeInterfaceInfoUsingPOST(
 }
 
 /** listInterfaceInfo GET /api/interfaceInfo/list */
-export async function listInterfaceInfoUsingGET(
+export async function listInterfaceInfoUsingGet(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.listInterfaceInfoUsingGETParams,
   options?: { [key: string]: any },
@@ -78,7 +78,7 @@ export async function listInterfaceInfoUsingGET(
 }
 
 /** listInterfaceInfoByPage GET /api/interfaceInfo/list/page */
-export async function listInterfaceInfoByPageUsingGET(
+export async function listInterfaceInfoByPageUsingGet(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.listInterfaceInfoByPageUsingGETParams,
   options?: { [key: string]: any },
@@ -93,7 +93,7 @@ export async function listInterfaceInfoByPageUsingGET(
 }
 
 /** offlineInterfaceInfo POST /api/interfaceInfo/offline */
-export async function offlineInterfaceInfoUsingPOST(
+export async function offlineInterfaceInfoUsingPost(
   body: API.IdRequest,
   options?: { [key: string]: any },
 ) {
@@ -108,7 +108,7 @@ export async function offlineInterfaceInfoUsingPOST(
 }
 
 /** onlineInterfaceInfo POST /api/interfaceInfo/online */
-export async function onlineInterfaceInfoUsingPOST(
+export async function onlineInterfaceInfoUsingPost(
   body: API.IdRequest,
   options?: { [key: string]: any },
 ) {
@@ -123,11 +123,26 @@ export async function onlineInterfaceInfoUsingPOST(
 }
 
 /** updateInterfaceInfo POST /api/interfaceInfo/update */
-export async function updateInterfaceInfoUsingPOST(
+export async function updateInterfaceInfoUsingPost(
   body: API.InterfaceInfoUpdateRequest,
   options?: { [key: string]: any },
 ) {
   return request<API.BaseResponseboolean>('/api/interfaceInfo/update', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** updateInterfaceInfoAvatarUrl POST /api/interfaceInfo/updateInterfaceInfoAvatar */
+export async function updateInterfaceInfoAvatarUrlUsingPost(
+  body: API.InterfaceInfoUpdateAvatarRequest,
+  options?: { [key: string]: any },
+) {
+  return request<API.BaseResponseboolean>('/api/interfaceInfo/updateInterfaceInfoAvatar', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
