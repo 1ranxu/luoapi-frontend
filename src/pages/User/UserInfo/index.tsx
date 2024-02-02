@@ -60,12 +60,12 @@ const UserInfo: React.FC = () => {
     {
       title: '个人信息设置',
       description: <span>这里是你的账号信息，您可以便捷的查看您的基本信息。<br/>您还可以修改和更新昵称和头像。
-        <br/>邮箱主要用于接收<strong>支付订单信息</strong>，不绑定无法接收哦，快去绑定吧！！🥰</span>,
+        <br/></span>,
       target: () => ref1.current,
     },
     {
       title: '我的钱包',
-      description: <span>这里是您的钱包，坤币用于平台接口的调用费用。<br/>除了充值坤币外，您还可以每日签到或者邀请好友注册来获得坤币</span>,
+      description: <span>这里是您的积分余额，接口调用会消耗积分。<br/>您可以通过每日签到来获得积分</span>,
       target: () => ref2.current,
     },
     {

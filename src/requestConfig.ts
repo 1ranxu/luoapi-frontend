@@ -17,7 +17,7 @@ interface ResponseStructure {
  * @doc https://umijs.org/docs/max/request#配置
  */
 export const requestConfig: RequestConfig = {
-    baseURL: process.env.NODE_ENV === 'production' ? "http://luoapi.icu/" : 'http://localhost:8082/',
+    baseURL: process.env.NODE_ENV === 'production' ? "http://backend.luoapi.icu/" : 'http://localhost:8082/',
     withCredentials: true,
 
     // 请求拦截器

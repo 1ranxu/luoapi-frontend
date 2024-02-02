@@ -96,8 +96,8 @@ const InterfaceSquare: React.FC = () => {
                               <ProCard layout="center">
                                 <Badge count={item.totalInvokes} overflowCount={999999999} color='#eb4d4b'>
                                   <Image style={{width: 80, borderRadius: 8, marginLeft: 10}}
-                                         src={item?.avatarUrl ?? "https://img.qimuu.icu/typory/logo.gif"}
-                                         fallback={"https://img.qimuu.icu/typory/logo.gif"}
+                                         src={item?.avatarUrl ?? "https://luoying-1320612776.cos.ap-chongqing.myqcloud.com/interface_avatar/1709135865515171845/18gGqm9B-wallpaper.png"}
+                                         fallback={"https://luoying-1320612776.cos.ap-chongqing.myqcloud.com/interface_avatar/1709135865515171845/18gGqm9B-wallpaper.png"}
                                          alt={item.name}
                                          preview={false}
                                   />

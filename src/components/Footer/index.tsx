@@ -16,14 +16,14 @@ const Footer: React.FC = () => {
             // @ts-ignore
             copyright={<>
                 {`${currentYear} ${defaultMessage}`} |{' '}
-                <a target={'_blank'} href={"https://beian.miit.gov.cn/"} rel="noreferrer"> 渝ICP备号-1</a>
-                {" | "}
+                <a target={'_blank'} href={"https://beian.miit.gov.cn/"} rel="noreferrer"> 渝ICP备2024021408号-1</a>
+                {/*{" | "}
                 <a target={'_blank'}
                    href={'https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41172702000163'}
                    rel="noreferrer">
-                    <img src="https://img.qimuu.icu/typory/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png"
-                         alt={'豫公网安备 41172702000163号'}/> 渝公网安备 号
-                </a>
+                    <img src=""
+                         alt={'渝公网安备 41172702000163号'}/> 渝公网安备 号
+                </a>*/}
 
             </>}
             links={[

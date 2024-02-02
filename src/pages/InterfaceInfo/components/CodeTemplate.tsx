@@ -29,7 +29,7 @@ export const javaExample = (url?: string, method?: string) =>
             luoApiRequest.setPath("${url}");
             luoApiRequest.setMethod("${method}");
             luoApiRequest.setRequestParams(params);
-            baseResponse = apiService.request(LuoApiRequest);
+            baseResponse = apiService.request(luoApiRequest);
             System.out.println("data = " + baseResponse.getData());
         } catch (BusinessException e) {
             log.error(e.getMessage());
