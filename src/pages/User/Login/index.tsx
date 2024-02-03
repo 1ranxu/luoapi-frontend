@@ -133,11 +133,11 @@ const Login: React.FC = () => {
                         items={[
                             {
                                 key: 'email',
-                                label: '邮箱账号登录',
+                                label: '邮箱登录',
                             },
                             {
                                 key: 'account',
-                                label: '账户密码登录',
+                                label: '密码登录',
                             },
 
                         ]}

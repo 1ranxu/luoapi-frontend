@@ -154,11 +154,11 @@ const Register: React.FC = () => {
                         items={[
                             {
                                 key: 'email',
-                                label: '邮箱账号注册',
+                                label: '邮箱注册',
                             },
                             {
                                 key: 'account',
-                                label: '平台账号注册',
+                                label: '密码注册',
                             },
                         ]}
                     />

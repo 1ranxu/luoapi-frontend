@@ -307,7 +307,7 @@ const UserInfo: React.FC = () => {
           ref={ref1}
           extra={
             <>
-              <Tooltip title={"用于接收订单信息"}>
+              <Tooltip title={"用于接收网站信息"}>
                 <Button onClick={() => {
                   setOpenEmailModal(true)
                 }
