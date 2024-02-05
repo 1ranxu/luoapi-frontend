@@ -60,7 +60,7 @@ const InterfaceSquare: React.FC = () => {
                         size={"large"}
                         maxLength={50}
                         enterButton="搜索"
-                        placeholder={"搜搜更健康"}
+                        placeholder={"请输入关键词"}
                         onSearch={onSearch}
                         style={{maxWidth: 600, height: 60}}/>
                 </ProCard>
