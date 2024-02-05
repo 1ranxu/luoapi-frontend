@@ -51,9 +51,9 @@ export async function getInitialState(): Promise<InitialState> {
 export const layout: RunTimeLayoutConfig = ({initialState, setInitialState}) => {
     return {
         actionsRender: () => [<Docs key="doc"/>],
-        waterMarkProps: {
+        /*waterMarkProps: {
             content: initialState?.loginUser?.userName,
-        },
+        },*/
         logo: logo,
         footerRender: () => <>
             <Footer/>

@@ -17,9 +17,10 @@
             },
         ],
     },
-    {path: '/:id', name: '欢迎', icon: 'CarOutlined', component: './Welcome', hideInMenu: true,},
+    // {path: '/:id', name: '欢迎', icon: 'CarOutlined', component: './Welcome', hideInMenu: true,},
     // {path: '/', name: '欢迎', icon: 'CarOutlined', component: './Welcome'},
     {path: '/', name: '接口空间', icon: 'HeatMapOutlined', component: './InterfaceSquare',},
+    {path: '/analysis', name: 'Top-Ten', icon: 'PieChartOutlined', component: './Admin/InterfaceAnalysis',},
     {
         path: '/account/center', name: '个人中心', icon: 'UserOutlined', component: './User/UserInfo', hideInMenu: true,
     },
