@@ -6,7 +6,7 @@ const Settings: ProLayoutProps & {
     navTheme?: string
 } = {
     navTheme: 'light',
-    colorPrimary: "#1677FF",
+    colorPrimary: "#13C2C2",
     layout: 'top',
     contentWidth: 'Fluid',
     fixedHeader: true,

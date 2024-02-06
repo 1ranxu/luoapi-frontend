@@ -98,7 +98,7 @@ export const layout: RunTimeLayoutConfig = ({initialState, setInitialState}) => 
         </>,
         avatarProps: {
             src: valueLength(initialState?.loginUser?.userAvatar) ? initialState?.loginUser?.userAvatar :
-                "https://img.qimuu.icu/typory/notLogin.png",
+                "https://luoying-1320612776.cos.ap-chongqing.myqcloud.com/user_avatar/notLogin.png",
             title: initialState?.loginUser ? <AvatarName/> : "游客",
             render: (_, avatarChildren) => {
                 return <AvatarDropdown>{avatarChildren}</AvatarDropdown>

@@ -237,7 +237,7 @@ const InterfaceInfoList: React.FC = () => {
                             handleOnline(record);
                         }}
                     >
-                        审核通过
+                        发布
                     </a>
                 ) : null,
                 record.status === 2 ? (
