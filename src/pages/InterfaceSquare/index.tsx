@@ -9,7 +9,7 @@ const InterfaceSquare: React.FC = () => {
     const [data, setData] = useState<API.InterfaceInfo[]>([]);
     const [searchText, setSearchText] = useState<string>('');
     const [total, setTotal] = useState<number>();
-    const [pageSize] = useState<number>(12);
+    const [pageSize] = useState<number>(50);
     const [loading, setLoading] = useState<boolean>(false);
 
     const loadData = async (current = 1) => {
