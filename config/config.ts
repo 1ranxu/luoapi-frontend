@@ -73,7 +73,7 @@ export default defineConfig({
      * @name layout 插件
      * @doc https://umijs.org/docs/max/layout-menu
      */
-    title: '落API',
+    title: '落水调',
     layout: {
         locale: true,
         ...defaultSettings,

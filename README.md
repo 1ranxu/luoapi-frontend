@@ -1,8 +1,8 @@
 <p align="center">
     <img src=./assets/logo.gif width=188/>
 </p>
-<h1 align="center">落API</h1>
-<p align="center"><strong>落API是一个为用户和开发者提供高速稳定免费APi接口调用的平台</strong></p>
+<h1 align="center">落水调</h1>
+<p align="center"><strong>落水调是一个为用户和开发者提供高速稳定免费APi接口调用的平台</strong></p>
 <div align="center">
 <a target="_blank" href="https://github.com/1ranxu/luoapi-backend">
     <img alt="" src="https://github.com/1ranxu/luoapi-backend/badge/star.svg?theme=gvp"/>
@@ -23,7 +23,7 @@
 </div>
 
 
-**[接口空间 - 落API (luoapi.icu)](http://luoapi.icu/)**
+**[接口空间 - 落水调 (luoapi.icu)](http://luoapi.icu/)**
 
 
 
@@ -34,7 +34,7 @@
 
 **💻作为开发者，我们为您提供了[客户端SDK](https://github.com/1ranxu/luoapi-client-sdk)， 使用[开发者凭证](http://luoapi.icu/account/center)即可将轻松集成接口到您的项目中，实现更高效的开发和调用。** 
 
-**🤝您可以在[客户端SDK](https://github.com/1ranxu/luoapi-client-sdk)提出issues，我们会帮助您将您开发的接口接入到落API接口开放平台，并发布给其他用户使用。**
+**🤝您可以在[客户端SDK](https://github.com/1ranxu/luoapi-client-sdk)提出issues，我们会帮助您将您开发的接口接入到落水调接口开放平台，并发布给其他用户使用。**
 
 
 

@@ -1,4 +1,4 @@
-import {history, useModel} from '@umijs/max';
+import {useModel} from '@umijs/max';
 import {
   Button,
   Descriptions,
@@ -378,13 +378,13 @@ const UserInfo: React.FC = () => {
         <br/>
         <ProCard ref={ref2} type={"inner"} bordered tooltip={"用于平台接口调用"}
                  title={<strong>我的积分</strong>}
-                 extra={
+                 /*extra={
                    <>
                      <Button onClick={() => {
                        history.push("/recharge/list")
                      }}>充值</Button>
                    </>
-                 }
+                 }*/
         >
           <strong>积分 : </strong> <span
           style={{color: "red", fontSize: 18}}>{loginUser?.score}</span>

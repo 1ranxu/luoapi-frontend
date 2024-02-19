@@ -13,7 +13,7 @@ const Settings: ProLayoutProps & {
     fixSiderbar: true,
     colorWeak: false,
     splitMenus: false,
-    title: '落API',
+    title: '落水调',
     pwa: false,
     // logo: 'https://img.luoying.icu/typory/logo.gif',
     iconfontUrl: 'https://img.luoying.icu/typory/logo.gif',
